@@ -9,7 +9,7 @@ Authors
 Contribution Rules
 - For each feature, we branch off form the most current branch.
 - Underscore naming convention.
-- 
+- (Add more if needed)
 
 
 Purposed Features
