@@ -44,6 +44,7 @@ class Ship(object):
 
     def set_pin_spaces(self):
         x, y = self.x, self.y
+
         for ll in range(self.length - 1):
             if self.direction == Directions.NORTH:
                 y = y + 1
