@@ -12,8 +12,6 @@ from ship import Ship, Directions
 
 class Tests(unittest.TestCase):
 
-    ship = Ship(1,1,5, Directions.NORTH)
-
     ###############################
     ######## Test Suites ##########
     ###############################
