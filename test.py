@@ -12,8 +12,13 @@ import ship
 
 class Tests(unittest.TestCase):
 
-	def test(self):
-		print('Can I see and import my ship?')
+
+	ship = ship.Ship(1,1,5)
+
+	def test_ship(self):
+		self.assertEqual(1,1)
+
+
 
 
 
