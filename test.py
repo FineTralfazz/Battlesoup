@@ -8,11 +8,11 @@ Created 2/09/18
 '''
 
 import unittest
-import ship
+from ship import Ship, Directions
 
 class Tests(unittest.TestCase):
 
-    ship = ship.Ship(1,1,5, NORTH)
+    ship = Ship(1,1,5, Directions.NORTH)
 
     ###############################
     ######## Test Suites ##########
@@ -22,7 +22,7 @@ class Tests(unittest.TestCase):
        self.assertEqual(self.ship.get_x(),1)
        self.assertEqual(self.ship.get_y(),1)
        self.assertEqual(self.ship.get_length(),5)
-       self.assertEqual(self.ship.get_direction())
+       self.assertEqual(self.ship.get_direction(), Directions.NORTH)
 
 
 

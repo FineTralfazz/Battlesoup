@@ -34,5 +34,5 @@ class Ship(object):
     def get_direction(self):
         return self.direction
 
-    def create_pin_spaces(self):
-        for ll in self.length:
+    # def create_pin_spaces(self):
+    #     for ll in self.length:
