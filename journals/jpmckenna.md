@@ -8,4 +8,4 @@ Results: Unittest library setup, simple ship placement, no validation yet. Follo
 
 Time: 20 Minutes
 
-Results: Added more Ship tests, refactored Ship functions, updated readme contribution rules, and corrected naming standards. 
+Results: Adzzg	ded more Ship tests, refactored Ship functions, updated readme contribution rules, and corrected naming standards. 
