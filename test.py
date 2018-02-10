@@ -12,7 +12,7 @@ import ship
 
 class Tests(unittest.TestCase):
 
-    ship = ship.Ship(1,1,5)
+    ship = ship.Ship(1,1,5, NORTH)
 
     ###############################
     ######## Test Suites ##########
@@ -22,6 +22,7 @@ class Tests(unittest.TestCase):
        self.assertEqual(self.ship.get_x(),1)
        self.assertEqual(self.ship.get_y(),1)
        self.assertEqual(self.ship.get_length(),5)
+       self.assertEqual(self.ship.get_direction())
 
 
 
