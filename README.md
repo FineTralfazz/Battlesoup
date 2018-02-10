@@ -17,11 +17,11 @@ Purposed Features
 - Whirlpools.
 - Straight line torpedo attacks.
 - Radar.
-- We to display and congratulate winner.
+- Display and congratulate winner.
 - Display misses and hits.
 - Playing board (1 or 2).
-- We can N number of ships, 
-- We can MxM board grid. (variable sized board)
+- Have N number of ships, 
+- Have MxM board grid. (variable sized board)
 - Sound effects. 
 - Explosions.
 - Cheats.
