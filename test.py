@@ -25,8 +25,8 @@ class Tests(unittest.TestCase):
        self.assertEqual(self.ship.get_direction(), Directions.NORTH)
 
     def test_ship_pins(self):
-        self.assertEqual(self.ship.get_pins(), [])
-
+        self.assertNotEqual(self.ship.get_pins(), [])
+        self.assertEqual(self.ship.get_pins(), [(1,1)])
 
 
 
