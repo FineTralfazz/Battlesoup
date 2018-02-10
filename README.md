@@ -6,8 +6,13 @@ Authors
 - Chris Bailey
 - Brandon Abbott
 
-Purposed Features
+Contribution Rules
+- For each feature, we branch off form the most current branch.
+- Underscore naming convention.
+- 
 
+
+Purposed Features
 - We want to place ships.
 - Want to destroy ships.
 - Play against an AI or Person.
