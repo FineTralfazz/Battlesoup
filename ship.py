@@ -22,6 +22,7 @@ class Ship(object):
        self.length = length
        self.direction = direction
        self.pins = [(self.x,self.y)]
+       self.create_pin_spaces()
 
     def get_x(self):
        return self.x
@@ -39,9 +40,10 @@ class Ship(object):
         return self.pins
 
     def create_pin_spaces(self):
-        for ll in (self.length - 1):
+        for ll in range(self.length - 1):
             if self.direction == Directions.NORTH:
-                self.pins.append( (self.x, self.y+1) )
+                self.y = self.y + 1
+                self.pins.append( (self.x, self.y) )
 
 
 

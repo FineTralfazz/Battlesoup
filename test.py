@@ -26,7 +26,7 @@ class Tests(unittest.TestCase):
 
     def test_ship_pins(self):
         self.assertNotEqual(self.ship.get_pins(), [])
-        self.assertEqual(self.ship.get_pins(), [(1,1)])
+        self.assertEqual(self.ship.get_pins(), [(1,1), (1,2), (1,3), (1,4), (1,5)])
 
 
 
