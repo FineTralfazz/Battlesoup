@@ -8,7 +8,7 @@ Authors
 
 Purposed Features
 
-We want to place ships
+- We want to place ships
 - Want to destroy ships.
 - Play against an AI or Person.
 - Use special moves/power-ups. 
