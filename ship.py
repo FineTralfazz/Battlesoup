@@ -21,6 +21,7 @@ class Ship(object):
        self.y = y
        self.length = length
        self.direction = direction
+       self.pins = []
 
     def get_x(self):
        return self.x
@@ -33,6 +34,9 @@ class Ship(object):
 
     def get_direction(self):
         return self.direction
+
+    def get_pins(self):
+        return self.pins
 
     # def create_pin_spaces(self):
     #     for ll in self.length:

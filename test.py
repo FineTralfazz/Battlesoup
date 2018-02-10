@@ -18,11 +18,14 @@ class Tests(unittest.TestCase):
     ######## Test Suites ##########
     ###############################
 
-    def test_ship_xy_length_values(self):
+    def test_ship_placement(self):
        self.assertEqual(self.ship.get_x(),1)
        self.assertEqual(self.ship.get_y(),1)
        self.assertEqual(self.ship.get_length(),5)
        self.assertEqual(self.ship.get_direction(), Directions.NORTH)
+
+    def test_ship_pins(self):
+        self.assertEqual(self.ship.get_pins(), [])
 
 
 
