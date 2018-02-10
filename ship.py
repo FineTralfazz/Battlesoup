@@ -39,28 +39,23 @@ class Ship(object):
     def get_pins(self):
         return self.pins
 
+    def append_pin_tuple(self, x, y):
+        self.pins.append((x, y))
+
     def set_pin_spaces(self):
         x, y = self.x, self.y
         for ll in range(self.length - 1):
             if self.direction == Directions.NORTH:
                 y = y + 1
-                self.pins.append((x, y))
-
             if self.direction == Directions.EAST:
                 x = x + 1
-                self.pins.append((x, y))
-
             if self.direction == Directions.SOUTH:
                 y = y - 1
-                self.pins.append((x, y))
-
             if self.direction == Directions.WEST:
                 x = x - 1
-                self.pins.append((x, y))
 
-        print('The pins',self.pins)
-
-
+            self.append_pin_tuple(x,y)
+        
 
 
 
