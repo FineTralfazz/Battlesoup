@@ -82,10 +82,14 @@ class Tests(unittest.TestCase):
     def test_board(self):
         board = Board()
         
+        board.place_ship(5,5,2, Directions.NORTH)
         board.place_ship(3,9,3, Directions.EAST)
         board.place_ship(0,9,4, Directions.SOUTH)
+        # Bad ship placements
         board.place_ship(1,5,5, Directions.WEST)
-        board.place_ship(5,5,2, Directions.NORTH)
+        board.place_ship(7,7,5, Directions.NORTH)
+        board.place_ship(7,7,5, Directions.EAST)
+        board.place_ship(1,1,3, Directions.WEST)
         board.place_ship(5,55,2, Directions.NORTH)
 
         self.assertFalse(board.is_valid_index(-2))
@@ -105,11 +109,13 @@ class Tests(unittest.TestCase):
         self.assertTrue(board.is_valid_placement(1,2,3,Directions.NORTH))
         self.assertTrue(board.is_valid_placement(7,4,1,Directions.NORTH))
         self.assertFalse(board.is_valid_placement(10,4,1,Directions.NORTH))
-        self.assertEqual(board.get_number_of_ships(), 4)
+
+        
+        self.assertEqual(board.get_number_of_ships(), 3)
 
     def test_bad_board_placement(self):
         board = Board()
-        
+
         board.place_ship(5,55,2, 10)
         board.place_ship(0,0,111, 10)
         board.place_ship(199,0,0, 10)
