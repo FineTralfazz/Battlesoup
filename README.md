@@ -39,3 +39,8 @@ Purposed Features
 - Store Winners and their score (number of turns to win).
 
 
+## How to run Test
+
+`python3 test.py -v` 
+
+`-v` for extra verbosity. 

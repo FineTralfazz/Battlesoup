@@ -86,8 +86,33 @@ class Tests(unittest.TestCase):
         board.place_ship(0,9,4, Directions.SOUTH)
         board.place_ship(1,5,5, Directions.WEST)
         board.place_ship(5,5,2, Directions.NORTH)
+        board.place_ship(5,55,2, Directions.NORTH)
+
+        self.assertFalse(board.is_valid_index(-2))
+        self.assertFalse(board.is_valid_index(-1))
+        self.assertTrue(board.is_valid_index(0))
+        self.assertTrue(board.is_valid_index(1))
+        self.assertTrue(board.is_valid_index(2))
+        self.assertTrue(board.is_valid_index(3))
+        self.assertTrue(board.is_valid_index(4))
+        self.assertTrue(board.is_valid_index(5))
+        self.assertTrue(board.is_valid_index(6))
+        self.assertTrue(board.is_valid_index(7))
+        self.assertTrue(board.is_valid_index(8))
+        self.assertTrue(board.is_valid_index(9))
+        self.assertFalse(board.is_valid_index(10))
+
+        self.assertTrue(board.is_valid_placement(1,2,3,Directions.NORTH))
+        self.assertTrue(board.is_valid_placement(7,4,1,Directions.NORTH))
+        self.assertFalse(board.is_valid_placement(10,4,1,Directions.NORTH))
+
+        # Poor index choices, can't place ships. 
+        board.place_ship(5,55,2, 10)
+        board.place_ship(0,0,111, 10)
+        board.place_ship(199,0,0, 10)
 
         self.assertEqual(board.get_number_of_ships(),4)
+        self.assertEqual(board.get_length(), 9)
 
 
 
