@@ -1,6 +1,6 @@
 # Jake's Journal
 
-##Date: 2/09/18
+## Date: 2/09/18
 
 Time: 1 Hour 
 
@@ -10,7 +10,7 @@ Time: 20 Minutes
 
 Results: Added more Ship tests, refactored Ship functions, updated readme contribution rules, and corrected naming standards. 
 
-##Date: 2/10/18
+## Date: 2/10/18
 
 Time: 30 minutes
 
