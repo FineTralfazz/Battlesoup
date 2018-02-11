@@ -44,3 +44,7 @@ Purposed Features
 `python3 test.py -v` 
 
 `-v` for extra verbosity. 
+
+## How to install REQUIREMENTS.txt via pip
+
+`pip install -r REQUIREMENTS.txt`
