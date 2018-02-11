@@ -13,6 +13,8 @@ class Board(object):
 
 	def __init__(self):
 		self.board = []
+		self.width = 10
+		self.height = 10
 
 	def place_ship(self, x, y, l, d):
 		self.board.append(Ship(x, y, l, d))
