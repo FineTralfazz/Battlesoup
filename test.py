@@ -9,6 +9,7 @@ Created 2/09/18
 
 import unittest
 from ship import Ship, Directions
+from board import Board
 
 class Tests(unittest.TestCase):
 
@@ -78,6 +79,15 @@ class Tests(unittest.TestCase):
         self.assertNotEqual(ship_W.get_pins(), [])
         self.assertEqual(ship_W.get_pins(), [(1,5), (0,5), (-1,5), (-2,5), (-3,5)])
 
+    def test_board(self):
+        board = Board()
+        
+        board.place_ship(3,9,3, Directions.EAST)
+        board.place_ship(0,9,4, Directions.SOUTH)
+        board.place_ship(1,5,5, Directions.WEST)
+        board.place_ship(5,5,2, Directions.NORTH)
+
+        self.assertEqual(board.get_number_of_ships(),4)
 
 
 
