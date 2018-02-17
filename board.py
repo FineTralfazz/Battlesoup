@@ -29,8 +29,6 @@ class Board(object):
         return True
 
     def is_ship_placed_on_ship(self):
-        
-
         return True
 
     def is_ship_out_of_bounds(self, x, y, l, d):
@@ -46,17 +44,13 @@ class Board(object):
         return True
 
     def is_valid_placement(self, x, y, l, d):
-        if not self.is_valid_index(x):
-            return False
-        if not self.is_valid_index(y):
-            return False
         if not self.is_valid_index(l):
             return False
         if not self.is_valid_direction(d):
             return False 
         if not self.is_ship_out_of_bounds(x,y,l,d):
             return False       
-        if not self.is_ship_out_of_bounds():
+        if not self.is_ship_out_of_bounds(x,y,l,d):
             return False
 
         return True
