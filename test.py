@@ -10,6 +10,7 @@ Created 2/09/18
 import unittest
 from ship import Ship, Directions
 from board import Board
+from game import Game
 
 class Tests(unittest.TestCase):
 
@@ -146,9 +147,6 @@ class Tests(unittest.TestCase):
         board.place_ship(5,6,5, Directions.SOUTH)
 
         self.assertEqual(board.get_number_of_ships(), 2)        
-
-
-
 
 if __name__ == '__main__':
     unittest.main()

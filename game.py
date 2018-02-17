@@ -7,7 +7,9 @@ Authors:
 Created 2/16/18
 '''
 
+from board import Board
+
 class Game(object):
 
 	def __init__(self):
-		print('hello there')
+		self.boards = [Board(), Board()]
