@@ -28,11 +28,13 @@ class Board(object):
             return False
         return True
 
-    def is_ship_placed_on_ship(self):
+    def is_ship_placed_on_ship(self, ship):
+
+        for ship in self.board:
+            print(ship)
         return True
 
-    def is_ship_out_of_bounds(self, x, y, l, d):
-        ship = Ship(x,y,l,d)
+    def is_ship_out_of_bounds(self, ship):
         # print('Ship pins', ship.get_pins())
         for coord in ship.get_pins():
             # print(coord[0], coord[1])
@@ -44,13 +46,14 @@ class Board(object):
         return True
 
     def is_valid_placement(self, x, y, l, d):
+        ship = Ship(x,y,l,d)
         if not self.is_valid_index(l):
             return False
         if not self.is_valid_direction(d):
             return False 
-        if not self.is_ship_out_of_bounds(x,y,l,d):
+        if not self.is_ship_out_of_bounds(ship):
             return False       
-        if not self.is_ship_out_of_bounds(x,y,l,d):
+        if not self.is_ship_placed_on_ship(ship):
             return False
 
         return True
