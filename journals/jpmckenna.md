@@ -15,3 +15,9 @@ Results: Added more Ship tests, refactored Ship functions, updated readme contri
 Time: 30 minutes
 
 Results: Added REQUIREMENTS.txt for required python libraries, added board class and simple test functions. 
+
+## Date: 2/16/18
+
+Time: 45 minutes
+
+Results: Finished testing board.py with out of bounds checking and ship collision. 
