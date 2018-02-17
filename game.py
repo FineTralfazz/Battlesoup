@@ -13,3 +13,6 @@ class Game(object):
 
 	def __init__(self):
 		self.boards = [Board(), Board()]
+
+	def get_number_of_boards(self):
+		return len(self.boards)
