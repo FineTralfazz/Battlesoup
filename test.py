@@ -113,7 +113,7 @@ class Tests(unittest.TestCase):
         
         self.assertEqual(board.get_number_of_ships(), 3)
 
-    def test_bad_board_placement(self):
+    def test_ships_out_of_bounds(self):
         board = Board()
 
         board.place_ship(5,55,2, 10)
@@ -124,8 +124,19 @@ class Tests(unittest.TestCase):
         self.assertEqual(board.get_length(), 9)
 
 
+    def test_colliding_ships(self):
+        board = Board()
+
+        self.assertTrue(board.is_valid_placement(0,0,5,Directions.NORTH))
+        board.place_ship(0,0,5,Directions.NORTH)
+
+        self.assertFalse(board.is_valid_placement(0,0,5,Directions.NORTH))
+        self.assertFalse(board.is_valid_placement(0,0,5,Directions.EAST))
+        board.place_ship(0,0,5,Directions.NORTH)
+        board.place_ship(0,0,5,Directions.EAST)
 
 
+        self.assertEqual(board.get_number_of_ships(), 1)
 
 if __name__ == '__main__':
     unittest.main()

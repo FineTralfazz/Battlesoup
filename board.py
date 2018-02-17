@@ -28,12 +28,13 @@ class Board(object):
             return False
         return True
 
-    def is_ship_placed_on_ship(self, poss_ship):
+    def is_ship_colliding(self, poss_ship):
 
         for ship in self.board:
-            for pin in poss_ship.get_pins():
+            for ii, pin in enumerate(poss_ship.get_pins()):
                 if pin in ship.get_pins():
                     return False
+
         return True
 
     def is_ship_out_of_bounds(self, ship):
@@ -54,7 +55,7 @@ class Board(object):
         ship = Ship(x,y,l,d)
         if not self.is_ship_out_of_bounds(ship):
             return False       
-        if not self.is_ship_placed_on_ship(ship):
+        if not self.is_ship_colliding(ship):
             return False
 
         return True
