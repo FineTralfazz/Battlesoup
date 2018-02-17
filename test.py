@@ -148,6 +148,12 @@ class Tests(unittest.TestCase):
 
         self.assertEqual(board.get_number_of_ships(), 2)        
 
+    def test_non_playable_game(self):
+        game = Game()
+
+        self.assertEqual(game.get_number_of_boards(), 2)
+
+
 if __name__ == '__main__':
     unittest.main()
 
