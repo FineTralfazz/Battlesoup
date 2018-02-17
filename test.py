@@ -135,9 +135,48 @@ class Tests(unittest.TestCase):
         board.place_ship(0,0,5,Directions.NORTH)
         board.place_ship(0,0,5,Directions.EAST)
 
-
         self.assertEqual(board.get_number_of_ships(), 1)
+
+
+
+        self.assertTrue(board.is_valid_placement(3,3,5, Directions.EAST))
+        board.place_ship(3,3,5, Directions.EAST)
+
+        self.assertFalse(board.is_valid_placement(5,6,5, Directions.SOUTH))
+        board.place_ship(5,6,5, Directions.SOUTH)
+
+        self.assertEqual(board.get_number_of_ships(), 2)        
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -29,10 +29,10 @@ class Board(object):
         return True
 
     def is_ship_colliding(self, poss_ship):
-
         for ship in self.board:
             for ii, pin in enumerate(poss_ship.get_pins()):
                 if pin in ship.get_pins():
+                    # print(pin, 'is in' ship.get_pins())
                     return False
 
         return True
