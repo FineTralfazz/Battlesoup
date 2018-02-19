@@ -22,6 +22,7 @@ def start_game():
     global game # This is gross, but easier than using a real database
     game = {
         'turn': 1,
+        'phase': 'setup',
         'player1_board': Board(),
         'player2_board': Board()
     }
@@ -75,4 +76,10 @@ def get_board():
         result['ships'].append(ship_dict)
     return jsonify(result)
 
-
+@app.route('/game_status')
+def game_status():
+    status = {
+        'turn': game['turn'],
+        'phase': game['phase']
+    }
+    return jsonify(status)
