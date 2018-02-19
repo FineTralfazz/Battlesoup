@@ -47,13 +47,13 @@ class Ship(object):
 
         for ll in range(self.length - 1):
             if self.direction == Directions.NORTH:
-                y = y + 1
-            elif self.direction == Directions.EAST:
-                x = x + 1
-            elif self.direction == Directions.SOUTH:
                 y = y - 1
-            elif self.direction == Directions.WEST:
+            elif self.direction == Directions.EAST:
                 x = x - 1
+            elif self.direction == Directions.SOUTH:
+                y = y + 1
+            elif self.direction == Directions.WEST:
+                x = x + 1
 
             self.append_pin_tuple(x,y)
 
