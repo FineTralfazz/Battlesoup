@@ -50,7 +50,7 @@ function placeShip(e) {
 					placementStatus['lastClick'] = undefined;
 					setStatusMessage('Please place your next vegetable');
 				} else {
-					setStatusMessage('Vegetables placed successfully.')
+					setStatusMessage('Vegetables placed successfully.');
 				}
 			} else {
 				setStatusMessage('Invalid vegetable location');
@@ -60,7 +60,11 @@ function placeShip(e) {
 }
 
 function drawTile(x, y, angle, url){
-	console.log(`drawing ${url} to ${x}, ${y}`)
+	var tile = $(`[data-column=${x}][data-row=${y}]`);
+	tile.css('background-image', `url(${url})`);
+	tile.css('background-size', 'contain');
+	tile.css('transform', `rotate(${angle}deg)`);
+	// tile.css('background-color', 'white')
 }
 
 function drawVeggies(x, y, length, direction){
@@ -86,9 +90,7 @@ function drawVeggies(x, y, length, direction){
 		} else if (direction == 3){
 			drawTile(x, --y, 90, url);
 		}
-	}
-
-	
+	}	
 }
 
 function updateGameStatus() {
@@ -104,7 +106,7 @@ function startGame(player) {
 		$('#main-game').show();
 		updateGameStatus();
 		placementStatus['currentShipLength'] = '5';
-		setStatusMessage('Please place your cucumber on the board.');
+		setStatusMessage('Please place your cucumber in the soup.');
 	})
 }
 
