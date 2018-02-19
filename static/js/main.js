@@ -27,9 +27,9 @@ function placeShip(e) {
 			}
 		} else if (lastY == currentY) {
 			if (lastX > currentX) {
-				direction = 3;
+				direction = 0;
 			} else if (lastX < currentX) {
-				direction = 1;
+				direction = 2;
 			} else {
 				setStatusMessage('Invalid location for vegetable.');
 			}
@@ -45,7 +45,6 @@ function placeShip(e) {
 		}
 		$.getJSON('/place', args, function(data) {
 			if (data['success']) {
-				drawVeggies(lastX, lastY, placementStatus['currentShipLength'], direction);
 				if (placementStatus['currentShipLength'] > 2) {
 					placementStatus['currentShipLength']--;
 					placementStatus['lastClick'] = undefined;
@@ -83,13 +82,13 @@ function drawVeggies(x, y, length, direction){
 	for ( var i = 0;  i<length; i++){
 		var url = `/static/img/${imagePrefix}${i}.png`;
 		if (direction == 0){
-			drawTile(x, y--, 270, url);
+			drawTile(--x, y, -90, url);
 		} else if (direction == 1){
-			drawTile(x++, y, 0, url);
+			drawTile(x, y++, 0, url);
 		} else if (direction == 2){
-			drawTile(x, y++, 180, url);
+			drawTile(++x, y, 180, url);
 		} else if (direction == 3){
-			drawTile(x--, y, 90, url);
+			drawTile(x, --y, 90, url);
 		}
 	}	
 }
