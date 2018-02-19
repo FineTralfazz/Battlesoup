@@ -87,9 +87,9 @@ function drawVeggies(x, y, length, direction){
 		} else if (direction == 1){
 			drawTile(x++, y, 0, url);
 		} else if (direction == 2){
-			drawTile(x, y++, 180, url);
+			drawTile(x, y++, 90, url);
 		} else if (direction == 3){
-			drawTile(x--, y, 90, url);
+			drawTile(x--, y, 180, url);
 		}
 	}	
 }

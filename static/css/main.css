@@ -47,6 +47,8 @@ td {
 	height: 50px;
 	width: 50px;
 	border-width: 2px;
+	padding-bottom: 50px;
+	background-repeat: no-repeat;
 }
 
 td.hit {
