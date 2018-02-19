@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title>Battlesoup</title>
+		<link rel="stylesheet" href="/static/css/main.css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="/static/js/main.js"></script>
+	</head>
+	<body>
+		<div id="player-select">
+			<div id="player-select-box">
+				<button onclick="startGame(1)" class="player-select-button">Player 1</button>
+				<img src="/static/img/logo.png" id="logo" />
+				<button onclick="startGame(2)" class="player-select-button">Player 2</button>
+			</div>
+		</div>
+		<div id="main-game" class="hidden">
+			<div id="bowl">
+				<!-- I know tables are gross, but this was the easiest way to do this. -->
+				<table>
+					<tr>
+						<td data-row="0" data-column="0"></td>
+						<td data-row="1" data-column="0"></td>
+						<td data-row="2" data-column="0"></td>
+						<td data-row="3" data-column="0"></td>
+						<td data-row="4" data-column="0"></td>
+						<td data-row="5" data-column="0"></td>
+						<td data-row="6" data-column="0"></td>
+						<td data-row="7" data-column="0"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="1"></td>
+						<td data-row="1" data-column="1"></td>
+						<td data-row="2" data-column="1"></td>
+						<td data-row="3" data-column="1"></td>
+						<td data-row="4" data-column="1"></td>
+						<td data-row="5" data-column="1"></td>
+						<td data-row="6" data-column="1"></td>
+						<td data-row="7" data-column="1"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="2"></td>
+						<td data-row="1" data-column="2"></td>
+						<td data-row="2" data-column="2"></td>
+						<td data-row="3" data-column="2"></td>
+						<td data-row="4" data-column="2"></td>
+						<td data-row="5" data-column="2"></td>
+						<td data-row="6" data-column="2"></td>
+						<td data-row="7" data-column="2"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="3"></td>
+						<td data-row="1" data-column="3"></td>
+						<td data-row="2" data-column="3"></td>
+						<td data-row="3" data-column="3"></td>
+						<td data-row="4" data-column="3"></td>
+						<td data-row="5" data-column="3"></td>
+						<td data-row="6" data-column="3"></td>
+						<td data-row="7" data-column="3"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="4"></td>
+						<td data-row="1" data-column="4"></td>
+						<td data-row="2" data-column="4"></td>
+						<td data-row="3" data-column="4"></td>
+						<td data-row="4" data-column="4"></td>
+						<td data-row="5" data-column="4"></td>
+						<td data-row="6" data-column="4"></td>
+						<td data-row="7" data-column="4"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="5"></td>
+						<td data-row="1" data-column="5"></td>
+						<td data-row="2" data-column="5"></td>
+						<td data-row="3" data-column="5"></td>
+						<td data-row="4" data-column="5"></td>
+						<td data-row="5" data-column="5"></td>
+						<td data-row="6" data-column="5"></td>
+						<td data-row="7" data-column="5"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="6"></td>
+						<td data-row="1" data-column="6"></td>
+						<td data-row="2" data-column="6"></td>
+						<td data-row="3" data-column="6"></td>
+						<td data-row="4" data-column="6"></td>
+						<td data-row="5" data-column="6"></td>
+						<td data-row="6" data-column="6"></td>
+						<td data-row="7" data-column="6"></td>
+					</tr>
+					<tr>
+						<td data-row="0" data-column="7"></td>
+						<td data-row="1" data-column="7"></td>
+						<td data-row="2" data-column="7"></td>
+						<td data-row="3" data-column="7"></td>
+						<td data-row="4" data-column="7"></td>
+						<td data-row="5" data-column="7"></td>
+						<td data-row="6" data-column="7"></td>
+						<td data-row="7" data-column="7"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="status-message"></div>
+	</body>
+</html>

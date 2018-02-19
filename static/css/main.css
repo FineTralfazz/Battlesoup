@@ -1,0 +1,54 @@
+#logo {
+	height: 100%;
+}
+
+#player-select {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#player-select-box {
+	display: inline-flex;
+	vertical-align: middle;
+}
+
+.player-select-button {
+	height: 100%;
+	width: 100;
+}
+
+.hidden {
+	display: none;
+}
+
+#main-game {
+	text-align: center;
+	vertical-align: middle;
+}
+
+#bowl {
+	border-style: solid;
+	background-image: url('/static/img/broth.jpg');
+	border-image-source: url('/static/img/bowl.png');
+	border-image-width: 50px;
+	border-image-slice: 140;
+	display: inline-flex;
+	padding: 50px;
+}
+
+table {
+	border-style: solid;
+	border-collapse: collapse;
+	border-width: 2px;
+}
+
+td {
+	border-style: solid;
+	height: 50px;
+	width: 50px;
+	border-width: 2px;
+}
+
+td.hit {
+	background-color: rgb(243, 241, 241);
+}
