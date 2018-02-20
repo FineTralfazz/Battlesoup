@@ -8,9 +8,9 @@
 	<body>
 		<div id="player-select">
 			<div id="player-select-box">
-				<button onclick="startGame(1)" class="player-select-button">Player 1</button>
-				<img src="/static/img/logo.png" id="logo" />
-				<button onclick="startGame(2)" class="player-select-button">Player 2</button>
+				<button onclick="joinGame(1)" class="player-select-button">Player 1</button>
+				<img src="/static/img/logo.png" id="logo" onclick="startGame()" />
+				<button onclick="joinGame(2)" class="player-select-button">Player 2</button>
 			</div>
 		</div>
 		<div id="main-game" class="hidden">

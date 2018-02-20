@@ -51,12 +51,22 @@ function placeShip(e) {
 					placementStatus['lastClick'] = undefined;
 					setStatusMessage('Please place your next vegetable');
 				} else {
-					setStatusMessage('Vegetables placed successfully.');
+					setStatusMessage('Vegetables placed successfully. Waiting for other player.');
+					waitForGameStart();
 				}
 			} else {
 				setStatusMessage('Invalid vegetable location');
 			}
 		});
+	}
+}
+
+function waitForGameStart() {
+	updateGameStatus();
+	if (gameStatus['phase'] == 'play') {
+		setStatusMessage(`Game started. It is player ${gameStatus['turn']}'s turn.`);
+	} else {
+		setTimeout(waitForGameStart, 1000);
 	}
 }
 
@@ -100,15 +110,17 @@ function updateGameStatus() {
 	});
 }
 
-function startGame(player) {
+function startGame() {
+	$.getJSON('/start_game')
+}
+
+function joinGame(player) {
 	playerId = player;
-	$.getJSON('/start_game', {'player': player}, function(data) {
-		$('#player-select').hide();
-		$('#main-game').show();
-		updateGameStatus();
-		placementStatus['currentShipLength'] = '5';
-		setStatusMessage('Please place your cucumber in the soup.');
-	})
+	$('#player-select').hide();
+	$('#main-game').show();
+	updateGameStatus();
+	placementStatus['currentShipLength'] = '5';
+	setStatusMessage('Please place your cucumber in the soup.');
 }
 
 function guess(e) {

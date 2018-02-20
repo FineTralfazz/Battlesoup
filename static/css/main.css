@@ -52,5 +52,5 @@ td {
 }
 
 td.hit {
-	background-color: rgb(243, 241, 241);
+	background-image: url('/static/img/pea.png');
 }

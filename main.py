@@ -24,13 +24,15 @@ def start_game():
         'turn': 1,
         'phase': 'setup',
         'player1_board': Board(),
-        'player2_board': Board()
+        'player2_board': Board(),
+        'player1_status': 'setup',
+        'player2_status': 'setup'
     }
     return jsonify({'success': True})
 
 def get_board_for_player(player):
     global game
-    if player == 1:
+    if int(player) == 1:
         return game['player1_board']
     else:
         return game['player2_board']
@@ -56,11 +58,16 @@ def direction_from_int(int_direction):
 
 @app.route('/place')
 def place():
+    global game
     board = get_board_for_player(request.args.get('player'))
     success = board.place_ship(int(request.args.get('x')), 
         int(request.args.get('y')),
         int(request.args.get('length')),
         direction_from_int(int(request.args.get('direction'))))
+    if len(board.board) == 4:
+        game['player' + request.args.get('player') + '_status'] = 'ready'
+        if game['player1_status'] == 'ready' and game['player2_status'] == 'ready':
+            game['phase'] = 'play'
     return jsonify({'success': success})
 
 @app.route('/board')
@@ -80,6 +87,8 @@ def get_board():
 def game_status():
     status = {
         'turn': game['turn'],
-        'phase': game['phase']
+        'phase': game['phase'],
+        'player1_status': game['player1_status'],
+        'player2_status': game['player2_status']
     }
     return jsonify(status)
