@@ -53,4 +53,5 @@ td {
 
 td.hit {
 	background-image: url('/static/img/pea.png');
+	background-size: contain;
 }
