@@ -26,7 +26,9 @@ def start_game():
         'player1_board': Board(),
         'player2_board': Board(),
         'player1_status': 'setup',
-        'player2_status': 'setup'
+        'player2_status': 'setup',
+        'player1_guesses': [],
+        'player2_guesses': []
     }
     return jsonify({'success': True})
 
@@ -44,6 +46,13 @@ def set_board_for_player(player, board):
     else:
         game['player2_board'] = board
 
+def get_guesses_for_player(player):
+    global game
+    if int(player) == 1:
+        return game['player1_guesses']
+    else:
+        return game['player2_guesses']
+
 def direction_from_int(int_direction):
     if int_direction == 0:
         return Directions.NORTH
@@ -55,6 +64,12 @@ def direction_from_int(int_direction):
         return Directions.WEST
     else:
         raise
+
+def get_opponent(player):
+    if int(player) == 1:
+        return 2
+    else:
+        return 1
 
 @app.route('/place')
 def place():
@@ -92,3 +107,24 @@ def game_status():
         'player2_status': game['player2_status']
     }
     return jsonify(status)
+
+@app.route('/guess')
+def guess():
+    player = request.args.get('player')
+    x = int(request.args.get('x'))
+    y = int(request.args.get('y'))
+    opponent = get_opponent(player)
+    opponent_board = get_board_for_player(opponent)
+    guesses = get_guesses_for_player(player)
+    for pin in opponent_board.get_pins():
+        if pin['x'] == x and pin['y'] == y:
+            guesses.append({'x': x, 'y': y, 'hit': True, 'length': pin['length']})
+            return jsonify({'hit': True})
+    guesses.append({'x': x, 'y': y, 'hit': False, 'length': 0})
+    return jsonify({'hit': False})
+
+@app.route('/guesses')
+def guesses():
+    player = request.args.get('player')
+    guesses = get_guesses_for_player(player)
+    return jsonify({'guesses': guesses})

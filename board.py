@@ -73,3 +73,9 @@ class Board(object):
     def get_number_of_ships(self):
         return len(self.board)
 
+    def get_pins(self):
+        result = []
+        for ship in self.board:
+            for pin in ship.get_pins():
+                result.append({'x': pin[0], 'y': pin[1], 'length': ship.get_length()})
+        return result
