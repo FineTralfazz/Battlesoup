@@ -90,6 +90,7 @@ function drawVeggies(x, y, length, direction){
 		imagePrefix = "broccoli"
 	}
 
+
 	for ( var i = 0;  i<length; i++){
 		var url = `/static/img/${imagePrefix}${i}.png`;
 		if (direction == 0){
@@ -101,12 +102,16 @@ function drawVeggies(x, y, length, direction){
 		} else if (direction == 3){
 			drawTile(x--, y, 180, url);
 		}
-	}	
+	}
 }
 
 function updateGameStatus() {
 	$.getJSON('/game_status', function(data) {
+		var lastPlayer = gameStatus['turn']
 		gameStatus = data;
+		if (gameStatus['turn'] != lastPlayer){
+			setStatusMessage(`It is player ${gameStatus['turn']}'s turn.`);
+		}
 	});
 }
 
@@ -123,11 +128,32 @@ function joinGame(player) {
 	setStatusMessage('Please place your cucumber in the soup.');
 }
 
-function guess(e) {
-	console.log(e);
-	var x = e.target.dataset.column;
-	var y = e.target.dataset.row;
-	
+function guess(e) {								//should I use this?
+	//console.log(e);
+	var pea = `/static/img/pea.png`
+	var curx = e.target.dataset.column;
+	var cury = e.target.dataset.row;
+
+	var args = {
+		'player': playerId,
+		'x': curx,
+		'y': cury,
+	}
+	if (gameStatus['turn']==playerId)
+	{
+		$.getJSON('/guess', args, function(data){
+			if (data['hit'] == true){
+				setStatusMessage('Thats a hit dawg');
+			} else if (data['hit'] == false){
+				drawTile(curx, cury, 180, pea);
+				setStatusMessage('Yup thats a pea');
+			}
+			updateGameStatus();
+		});
+	}
+	else{
+		setStatusMessage('Not your turn buddy');
+	}
 }
 
 $(function() {
@@ -138,5 +164,5 @@ $(function() {
 			guess(e);
 		}
 	});
-	setStatusMessage('test');
+	setInterval(updateGameStatus, 1000);
 });

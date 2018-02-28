@@ -32,6 +32,13 @@ def start_game():
     }
     return jsonify({'success': True})
 
+def switch_turn ():
+    global game
+    if game['turn'] == 1:
+        game['turn'] = 2
+    else:
+        game['turn'] = 1
+
 def get_board_for_player(player):
     global game
     if int(player) == 1:
@@ -75,7 +82,7 @@ def get_opponent(player):
 def place():
     global game
     board = get_board_for_player(request.args.get('player'))
-    success = board.place_ship(int(request.args.get('x')), 
+    success = board.place_ship(int(request.args.get('x')),
         int(request.args.get('y')),
         int(request.args.get('length')),
         direction_from_int(int(request.args.get('direction'))))
@@ -84,6 +91,7 @@ def place():
         if game['player1_status'] == 'ready' and game['player2_status'] == 'ready':
             game['phase'] = 'play'
     return jsonify({'success': success})
+
 
 @app.route('/board')
 def get_board():
@@ -110,18 +118,24 @@ def game_status():
 
 @app.route('/guess')
 def guess():
-    player = request.args.get('player')
+    global game
+    player = int(request.args.get('player'))
     x = int(request.args.get('x'))
     y = int(request.args.get('y'))
     opponent = get_opponent(player)
     opponent_board = get_board_for_player(opponent)
     guesses = get_guesses_for_player(player)
-    for pin in opponent_board.get_pins():
-        if pin['x'] == x and pin['y'] == y:
-            guesses.append({'x': x, 'y': y, 'hit': True, 'length': pin['length']})
-            return jsonify({'hit': True})
-    guesses.append({'x': x, 'y': y, 'hit': False, 'length': 0})
-    return jsonify({'hit': False})
+    if player == game['turn']:
+        for pin in opponent_board.get_pins():
+            if pin['x'] == x and pin['y'] == y:
+                guesses.append({'x': x, 'y': y, 'hit': True, 'length': pin['length']})
+                switch_turn()
+                return jsonify({'hit': True})
+        guesses.append({'x': x, 'y': y, 'hit': False, 'length': 0})
+        switch_turn()
+        return jsonify({'hit': False})
+    else:
+        return jsonify({'success':False})
 
 @app.route('/guesses')
 def guesses():
