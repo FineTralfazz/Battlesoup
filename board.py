@@ -48,18 +48,18 @@ class Board(object):
 
     def is_valid_placement(self, x, y, l, d):
         if not self.is_valid_index(l):
-            print('Invalid length')
+            # print('Invalid length')
             return False
         if not self.is_valid_direction(d):
-            print('invalid direction')
+            # print('invalid direction')
             return False 
 
         ship = Ship(x,y,l,d)
         if self.is_ship_out_of_bounds(ship):
-            print('out of bounds')
+            # print('out of bounds')
             return False       
         if self.is_ship_colliding(ship):
-            print('collision')
+            # print('collision')
             return False
 
         return True

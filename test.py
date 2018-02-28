@@ -31,13 +31,13 @@ class Tests(unittest.TestCase):
         ship_W = Ship(1,1,5, Directions.WEST)
 
         self.assertNotEqual(ship_N.get_pins(), [])
-        self.assertEqual(ship_N.get_pins(), [(1,1), (1,2), (1,3), (1,4), (1,5)])
+        self.assertEqual(ship_N.get_pins(), [(1, 1), (1, 0), (1, -1), (1, -2), (1, -3)])
 
         self.assertNotEqual(ship_E.get_pins(), [])
         self.assertEqual(ship_E.get_pins(), [(1,1), (2,1), (3,1), (4,1), (5,1)])
 
         self.assertNotEqual(ship_S.get_pins(), [])
-        self.assertEqual(ship_S.get_pins(), [(1,1), (1,0), (1,-1), (1,-2), (1,-3)])
+        self.assertEqual(ship_S.get_pins(), [(1, 1), (1, 2), (1, 3), (1, 4), (1, 5)])
 
         self.assertNotEqual(ship_W.get_pins(), [])
         self.assertEqual(ship_W.get_pins(), [(1,1), (0,1), (-1,1), (-2,1), (-3,1)])
@@ -49,13 +49,13 @@ class Tests(unittest.TestCase):
         ship_W = Ship(1,1,5, Directions.WEST)
 
         self.assertNotEqual(ship_N.get_pins(), [])
-        self.assertEqual(ship_N.get_pins(), [(1,1), (1,2)])
+        self.assertEqual(ship_N.get_pins(), [(1, 1), (1, 0)])
 
         self.assertNotEqual(ship_E.get_pins(), [])
         self.assertEqual(ship_E.get_pins(), [(1,1), (2,1), (3,1)])
 
         self.assertNotEqual(ship_S.get_pins(), [])
-        self.assertEqual(ship_S.get_pins(), [(1,1), (1,0), (1,-1), (1,-2)])
+        self.assertEqual(ship_S.get_pins(), [(1, 1), (1, 2), (1, 3), (1, 4)])
 
         self.assertNotEqual(ship_W.get_pins(), [])
         self.assertEqual(ship_W.get_pins(), [(1,1), (0,1), (-1,1), (-2,1), (-3,1)])
@@ -68,13 +68,13 @@ class Tests(unittest.TestCase):
         ship_W = Ship(1,5,5, Directions.WEST)
 
         self.assertNotEqual(ship_N.get_pins(), [])
-        self.assertEqual(ship_N.get_pins(), [(5,5), (5,6)])
+        self.assertEqual(ship_N.get_pins(), [(5, 5), (5, 4)])
 
         self.assertNotEqual(ship_E.get_pins(), [])
         self.assertEqual(ship_E.get_pins(), [(3,9), (4,9), (5,9)])
 
         self.assertNotEqual(ship_S.get_pins(), [])
-        self.assertEqual(ship_S.get_pins(), [(0,9), (0,8), (0,7), (0,6)])
+        self.assertEqual(ship_S.get_pins(), [(0, 9), (0, 10), (0, 11), (0, 12)])
 
         self.assertNotEqual(ship_W.get_pins(), [])
         self.assertEqual(ship_W.get_pins(), [(1,5), (0,5), (-1,5), (-2,5), (-3,5)])
@@ -107,7 +107,7 @@ class Tests(unittest.TestCase):
         self.assertFalse(board.is_valid_index(10))
 
         self.assertTrue(board.is_valid_placement(1,2,3,Directions.NORTH))
-        self.assertTrue(board.is_valid_placement(7,4,1,Directions.NORTH))
+        self.assertFalse(board.is_valid_placement(7,4,1,Directions.NORTH))
         self.assertFalse(board.is_valid_placement(10,4,1,Directions.NORTH))
 
         
@@ -127,11 +127,11 @@ class Tests(unittest.TestCase):
     def test_colliding_ships(self):
         board = Board()
 
-        self.assertTrue(board.is_valid_placement(0,0,5,Directions.NORTH))
+        self.assertTrue(board.is_valid_placement(0,0,5,Directions.SOUTH))
         board.place_ship(0,0,5,Directions.NORTH)
 
         self.assertFalse(board.is_valid_placement(0,0,5,Directions.NORTH))
-        self.assertFalse(board.is_valid_placement(0,0,5,Directions.EAST))
+        self.assertTrue(board.is_valid_placement(0,0,5,Directions.EAST))
         board.place_ship(0,0,5,Directions.NORTH)
         board.place_ship(0,0,5,Directions.EAST)
 

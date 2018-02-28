@@ -57,5 +57,5 @@ class Ship(object):
 
             self.append_pin_tuple(x,y)
 
-        print('Pins at:')
-        print(self.pins)
+        # print('Pins at:')
+        # print(self.pins)
