@@ -102,8 +102,8 @@ class Tests(unittest.TestCase):
         self.assertTrue(board.is_valid_index(5))
         self.assertTrue(board.is_valid_index(6))
         self.assertTrue(board.is_valid_index(7))
-        self.assertTrue(board.is_valid_index(8))
-        self.assertTrue(board.is_valid_index(9))
+        self.assertFalse(board.is_valid_index(8))
+        self.assertFalse(board.is_valid_index(9))
         self.assertFalse(board.is_valid_index(10))
 
         self.assertTrue(board.is_valid_placement(1,2,3,Directions.NORTH))
@@ -111,7 +111,7 @@ class Tests(unittest.TestCase):
         self.assertFalse(board.is_valid_placement(10,4,1,Directions.NORTH))
 
         
-        self.assertEqual(board.get_number_of_ships(), 3)
+        self.assertEqual(board.get_number_of_ships(), 2)
 
     def test_ships_out_of_bounds(self):
         board = Board()
@@ -121,7 +121,7 @@ class Tests(unittest.TestCase):
         board.place_ship(199,0,0, 10)
 
         self.assertEqual(board.get_number_of_ships(), 0)
-        self.assertEqual(board.get_length(), 9)
+        self.assertEqual(board.get_length(), 7)
 
 
     def test_colliding_ships(self):

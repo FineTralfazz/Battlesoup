@@ -13,7 +13,7 @@ class Board(object):
 
     def __init__(self):
         self.board = []
-        self.length = 9
+        self.length = 7
 
     def get_length(self):
         return self.length
