@@ -55,3 +55,7 @@ td.hit {
 	background-image: url('/static/img/pea.png');
 	background-size: contain;
 }
+
+h1 {
+	text-align: center;
+}

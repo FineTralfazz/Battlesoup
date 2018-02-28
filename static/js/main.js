@@ -1,6 +1,7 @@
 var playerId;
 var gameStatus = {};
 var placementStatus = {};
+var hits = 0;
 
 function setStatusMessage(message) {
 	$('#status-message').text(message);
@@ -101,6 +102,14 @@ function	drawHit(x, y, length){
 
 }
 
+function displayWin(){
+	$('#win-banner').show();
+	$("#status-message").hide();
+	setInterval(function(){
+		$('#main-game').toggle()
+	},1000)
+}
+
 function drawTile(x, y, angle, url){
 	var tile = $(`[data-column=${x}][data-row=${y}]`);
 	tile.css('background-image', `url(${url})`);
@@ -176,6 +185,10 @@ function guess(e) {								//should I use this?
 			if (data['hit'] == true){
 				setStatusMessage('Thats a hit dawg');
 				drawHit(curx, cury, data['length']);
+				++hits;
+				if (hits == 14){
+					displayWin();
+				}
 			} else if (data['hit'] == false){
 				drawTile(curx, cury, 180, pea);
 				setStatusMessage('Yup thats a pea');
