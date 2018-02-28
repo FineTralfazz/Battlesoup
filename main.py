@@ -130,7 +130,7 @@ def guess():
             if pin['x'] == x and pin['y'] == y:
                 guesses.append({'x': x, 'y': y, 'hit': True, 'length': pin['length']})
                 switch_turn()
-                return jsonify({'hit': True})
+                return jsonify({'hit': True, 'length': pin['length']})
         guesses.append({'x': x, 'y': y, 'hit': False, 'length': 0})
         switch_turn()
         return jsonify({'hit': False})

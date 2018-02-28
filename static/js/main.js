@@ -60,14 +60,45 @@ function placeShip(e) {
 		});
 	}
 }
-
+function clearBoard(){
+	$('td').css('background-image', '');
+}
 function waitForGameStart() {
 	updateGameStatus();
 	if (gameStatus['phase'] == 'play') {
 		setStatusMessage(`Game started. It is player ${gameStatus['turn']}'s turn.`);
+		clearBoard();
 	} else {
 		setTimeout(waitForGameStart, 1000);
 	}
+}
+function randInt(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min +1)) + min;
+}
+
+function	drawHit(x, y, length){
+	var imagePrefix;
+	var randAngle;
+	var randVeggie;
+
+	if (length == 5){
+		imagePrefix = "cuc";
+	} else if (length == 4){
+		imagePrefix = "cel";
+	} else if (length == 3){
+		imagePrefix = "car";
+	} else if (length == 2){
+		imagePrefix = "broccoli"
+	}
+
+	randAngle = randInt(0, 3) * 90;
+	randVeggie = randInt(0, length-1);
+
+	var url = `/static/img/${imagePrefix}${randVeggie}.png`;
+	drawTile(x, y, randAngle, url);
+
 }
 
 function drawTile(x, y, angle, url){
@@ -144,6 +175,7 @@ function guess(e) {								//should I use this?
 		$.getJSON('/guess', args, function(data){
 			if (data['hit'] == true){
 				setStatusMessage('Thats a hit dawg');
+				drawHit(curx, cury, data['length']);
 			} else if (data['hit'] == false){
 				drawTile(curx, cury, 180, pea);
 				setStatusMessage('Yup thats a pea');
