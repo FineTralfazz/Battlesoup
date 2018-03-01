@@ -15,3 +15,15 @@ Results: Added more Ship tests, refactored Ship functions, updated readme contri
 Time: 30 minutes
 
 Results: Added REQUIREMENTS.txt for required python libraries, added board class and simple test functions. 
+
+## Date: 2/27/18
+
+Time: 1 Hour
+
+Results: Fixed test cases due to frontend board config.
+
+## Date: 2/28/18
+
+Time: 1 Hour
+
+Results: Fixed test cases due to frontend board config for final presentation.
