@@ -116,9 +116,11 @@ class Tests(unittest.TestCase):
     def test_ships_out_of_bounds(self):
         board = Board()
 
-        board.place_ship(5,55,2, 10)
-        board.place_ship(0,0,111, 10)
-        board.place_ship(199,0,0, 10)
+        board.place_ship(5,55,2, Directions.NORTH)
+        board.place_ship(0,0,111, Directions.NORTH)
+        board.place_ship(199,0,0, Directions.NORTH)
+        board.place_ship(0,-1,1, Directions.NORTH)
+        board.place_ship(0,0,2, Directions.NORTH)
 
         self.assertEqual(board.get_number_of_ships(), 0)
         self.assertEqual(board.get_length(), 7)
